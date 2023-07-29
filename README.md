@@ -6,7 +6,7 @@ This is essentially a simple intro of a proof of concept game and to show possib
 
 ## Regarding the legality of it all:
 To use the music and sound effects, you'll have to source them yourselves but it's very easy to find but what isn't usually easy is the legal info. 
-For a full simple "what you can do" statement from the owners themselves is [here.](https://www.xbox.com/en-US/developers/rules). The gist is that you can use in game but if you explicitly say
+For a full simple "what you can do" statement from the owners themselves, [go here](https://www.xbox.com/en-US/developers/rules). The gist is that you can use in game but if you explicitly say
 
 ```
 "Halo 2 & Halo 3: ODST © Microsoft Corporation. "Prepare to Drop" was created under Microsoft's "Game Content Usage Rules" using assets from Halo 2 & Halo 3:ODST, and it is not endorsed by or affiliated with Microsoft."
