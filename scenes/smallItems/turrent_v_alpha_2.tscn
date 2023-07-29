@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4vsdaikff1ju"]
+
+[ext_resource type="Texture2D" uid="uid://c35i4q4q7vack" path="res://assets/3D/res/Textures/Phantom/Material_BaseColor.png" id="1_rnvyq"]
+[ext_resource type="Script" path="res://srcs/itemCore/TurretVAlpha.gd" id="2_4xh7d"]
+[ext_resource type="Texture2D" uid="uid://f7i2rfcrtvi0" path="res://assets/3D/res/Textures/Phantom/Material_Emission.png" id="3_a2b5s"]
+[ext_resource type="Texture2D" uid="uid://brbv3ru03ksgk" path="res://assets/3D/res/Textures/Phantom/P1_BaseColor.png" id="4_hd6fg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67usy"]
+albedo_texture = ExtResource("1_rnvyq")
+metallic = 1.0
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_f48rx"]
+material = SubResource("StandardMaterial3D_67usy")
+size = Vector3(0.3, 1.2, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8jau"]
+albedo_texture = ExtResource("3_a2b5s")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gow7y"]
+material = SubResource("StandardMaterial3D_d8jau")
+radius = 0.222
+height = 0.805
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4o1kh"]
+albedo_texture = ExtResource("4_hd6fg")
+uv1_scale = Vector3(0.68, 0.68, 0.68)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 26.5166
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_50ce8"]
+material = SubResource("StandardMaterial3D_4o1kh")
+top_radius = 0.14
+bottom_radius = 0.07
+height = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jh1o7"]
+size = Vector3(286.2, 79, 203.011)
+
+[node name="TurrentVAlpha_2" type="MeshInstance3D"]
+transform = Transform3D(1, 8.74228e-08, 8.74228e-08, 8.74228e-08, -1, 7.64274e-15, 8.74228e-08, 0, -1, -2.12288, 1.06412, -4.66978)
+mesh = SubResource("BoxMesh_f48rx")
+
+[node name="Turret" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45058e-09, 0.783262, 0)
+script = ExtResource("2_4xh7d")
+
+[node name="Head" type="MeshInstance3D" parent="Turret"]
+transform = Transform3D(1, -1.50996e-07, 1.50996e-07, -1.50996e-07, -4.37114e-08, 1, -1.50996e-07, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_gow7y")
+skeleton = NodePath("../..")
+
+[node name="Barrel" type="MeshInstance3D" parent="Turret/Head"]
+transform = Transform3D(1, 0, -5.05181e-16, 0, 1, 0, -5.05178e-16, 0, 1, -1.04308e-07, -0.816768, 0)
+mesh = SubResource("CylinderMesh_50ce8")
+
+[node name="Barrel_point" type="Marker3D" parent="Turret/Head/Barrel"]
+transform = Transform3D(-1, 6.60026e-15, -1.50996e-07, 1.50996e-07, 4.37114e-08, -1, 6.60026e-15, -1, -4.37114e-08, -1.04308e-07, -0.510915, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Turret/Head/Barrel"]
+transform = Transform3D(1, 0, -5.05181e-16, 0, 1, 0, -5.05178e-16, 0, 1, -1.04308e-07, -0.51728, 0)
+target_position = Vector3(0, -200, 0)
+
+[node name="FireRate" type="Timer" parent="Turret"]
+one_shot = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100.269)
+shape = SubResource("BoxShape3D_jh1o7")
+
+[connection signal="body_entered" from="Area3D" to="Turret" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Turret" method="_on_area_3d_body_exited"]

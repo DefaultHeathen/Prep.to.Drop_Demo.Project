@@ -1,0 +1,24 @@
+Halo 2 & Halo 3: ODST © Microsoft Corporation. "Prepare to Drop" was created under Microsoft's "Game Content Usage Rules" using assets from Halo 2 & Halo 3:ODST, and it is not endorsed by or affiliated with Microsoft.
+
+"Halo 3 SMG Restoration" (https://skfb.ly/o8znt) by Vuthakral is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+in conjuntion with
+Halo: The Master Chief Collection & Halo 3 © Microsoft Corporation. “Halo 3 SMG Restoration” was created under Microsoft’s “Game Content Usage Rules” using assets from Halo: The Master Chief Collection & Halo 3 and it is not endorsed by or affiliated with Microsoft.
+
+"Halo Phantom" (https://skfb.ly/oxC8y) by Ryanwill679 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"City Grid Block" (https://skfb.ly/onMzQ) by antoniojmonteiro is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"Modern City Block" (https://skfb.ly/6V8Rx) by akselmot is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+"M45 Gustav weapon" related sound effects obtained from from https://www.zapsplat.com
+
+This FREE game, "Prepare to Drop", uses these sounds from freesound:
+"good_luck_Johnny" by tim.kahn (https://freesound.org/s/93673/) licensed under CCBYNC 4.0
+
+"Particle Pack" (1.1); 
+by Kenney Vleugels (Kenney.nl)
+Permission License under Creative Commons Zero, CC0
+
+"Godot XR tools" 4.1.0 plugin 
+maintained by Bastiaan Olij (https://github.com/BastiaanOlij) and many contributors 
+https://github.com/GodotVR/godot-xr-tools

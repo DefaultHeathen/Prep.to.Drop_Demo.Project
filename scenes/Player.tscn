@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bptuojerlvx8i"]
+
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="2_526rw"]
+[ext_resource type="PackedScene" uid="uid://bj1aas6kty3qx" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_physics_tac_glove_low.tscn" id="2_wvoe1"]
+[ext_resource type="Material" uid="uid://b5hc5vc8x8yly" path="res://addons/godot-xr-tools/hands/materials/glove_african_green_camo.material" id="3_g00yw"]
+[ext_resource type="PackedScene" uid="uid://bft3xyxs31ci3" path="res://addons/godot-xr-tools/functions/function_pose_detector.tscn" id="3_j3niu"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="4_x6diy"]
+[ext_resource type="PackedScene" uid="uid://drs4eeq721ojn" path="res://addons/godot-xr-tools/functions/movement_sprint.tscn" id="5_cb1n4"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="5_hn0ii"]
+[ext_resource type="PackedScene" uid="uid://c2uvwvdlsfuep" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_physics_tac_glove_low.tscn" id="6_d28ji"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="6_uwh54"]
+
+[node name="Player" type="XROrigin3D"]
+current = true
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+current = true
+far = 14000.0
+
+[node name="PlayerBody" parent="." instance=ExtResource("6_uwh54")]
+collision_layer = 524289
+collision_mask = 219
+
+[node name="LeftHand" type="XRController3D" parent="." groups=["PHand"]]
+tracker = &"left_hand"
+
+[node name="LeftPhysicsHand" parent="LeftHand" instance=ExtResource("2_wvoe1")]
+bone_group = ""
+hand_material_override = ExtResource("3_g00yw")
+
+[node name="MovementDirect" parent="LeftHand" instance=ExtResource("2_526rw")]
+max_speed = 2.0
+strafe = true
+
+[node name="FunctionPoseDetector" parent="LeftHand" instance=ExtResource("3_j3niu")]
+
+[node name="FunctionPickup" parent="LeftHand" instance=ExtResource("5_hn0ii")]
+grab_distance = 0.085
+ranged_enable = false
+
+[node name="PalmPoint" type="Marker3D" parent="LeftHand"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0268188, -0.0576857, 0.079969)
+
+[node name="RightHand" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="RightPhysicsHand" parent="RightHand" instance=ExtResource("6_d28ji")]
+bone_group = ""
+hand_material_override = ExtResource("3_g00yw")
+
+[node name="MovementTurn" parent="RightHand" instance=ExtResource("4_x6diy")]
+turn_mode = 2
+
+[node name="FunctionPoseDetector" parent="RightHand" instance=ExtResource("3_j3niu")]
+
+[node name="FunctionPickup" parent="RightHand" instance=ExtResource("5_hn0ii")]
+grab_distance = 0.1
+ranged_enable = false
+
+[node name="MovementSprint" parent="." instance=ExtResource("5_cb1n4")]
+sprint_type = 1

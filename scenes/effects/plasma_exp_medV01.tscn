@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr0ehmkuu3v25"]
+
+[ext_resource type="Texture2D" uid="uid://bkwvah24kpdqk" path="res://assets/2D/Particle Pack/smoke_02.png" id="1_6yml2"]
+[ext_resource type="Script" path="res://srcs/effects/effect_flash.gd" id="2_qicm1"]
+[ext_resource type="Script" path="res://srcs/effects/AoE.gd" id="3_38o3x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtmdi"]
+transparency = 1
+depth_draw_mode = 2
+shading_mode = 2
+diffuse_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_6yml2")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_w1xaf"]
+material = SubResource("StandardMaterial3D_jtmdi")
+size = Vector2(1.75, 1.75)
+
+[sub_resource type="Gradient" id="Gradient_52o4e"]
+offsets = PackedFloat32Array(0, 0.180488, 1)
+colors = PackedColorArray(0.67451, 0.105882, 1.81176, 1, 0.0766366, 0.110661, 1, 1, 0.00197067, 0.00553735, 0.585661, 0)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vjqw6"]
+radius = 4.0
+
+[node name="PlasmaExpMed" type="Node3D"]
+
+[node name="ExpEffect" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0277198, 0.999616, 0, -0.999616, 0.0277198, 0.0488381, 0, 0)
+gi_mode = 0
+emitting = false
+amount = 10
+lifetime = 3.8
+one_shot = true
+preprocess = 0.65
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 0.2
+mesh = SubResource("QuadMesh_w1xaf")
+direction = Vector3(0, 1, 0.01)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0.35, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 18.0
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+radial_accel_max = 0.2
+damping_min = 80.0
+damping_max = 120.0
+angle_max = 360.0
+color_ramp = SubResource("Gradient_52o4e")
+
+[node name="MFlash" type="OmniLight3D" parent="."]
+light_color = Color(0.192157, 0, 1, 1)
+distance_fade_enabled = true
+distance_fade_length = 0.1
+omni_range = 3.269
+omni_attenuation = 12.1257
+script = ExtResource("2_qicm1")
+decay_rate = 1.0
+
+[node name="AoE" type="Area3D" parent="."]
+script = ExtResource("3_38o3x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AoE"]
+shape = SubResource("SphereShape3D_vjqw6")
+
+[connection signal="body_entered" from="AoE" to="AoE" method="_on_body_entered"]

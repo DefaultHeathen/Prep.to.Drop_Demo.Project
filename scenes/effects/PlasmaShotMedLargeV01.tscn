@@ -1,0 +1,113 @@
+[gd_scene load_steps=12 format=3 uid="uid://dje60wtsurtsw"]
+
+[ext_resource type="Texture2D" uid="uid://ds5ca3btfmg38" path="res://assets/2D/Particle Pack/star_05.png" id="1_2ru7y"]
+[ext_resource type="Script" path="res://srcs/itemCore/ProjectileV01.gd" id="1_mcpys"]
+[ext_resource type="Texture2D" uid="uid://bkwvah24kpdqk" path="res://assets/2D/Particle Pack/smoke_02.png" id="2_bspr2"]
+[ext_resource type="Script" path="res://srcs/effects/TrailDecay.gd" id="3_445w2"]
+[ext_resource type="Script" path="res://srcs/effects/effect_flash.gd" id="3_c8utk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_swqjs"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.0313726, 0.294118, 1, 1)
+emission = Color(1, 1, 1, 1)
+clearcoat_roughness = 0.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qsb8e"]
+material = SubResource("StandardMaterial3D_swqjs")
+radius = 0.034
+height = 0.5
+radial_segments = 5
+rings = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtmdi"]
+transparency = 1
+depth_draw_mode = 2
+shading_mode = 2
+diffuse_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_bspr2")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_0vywr"]
+material = SubResource("StandardMaterial3D_jtmdi")
+size = Vector2(0.75, 0.75)
+
+[sub_resource type="Gradient" id="Gradient_hx0qv"]
+offsets = PackedFloat32Array(0, 0.526829, 1)
+colors = PackedColorArray(0, 0.105804, 1.81, 1, 0.870417, 0, 1, 1, 0, 0.105882, 1.81176, 0)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n0q13"]
+radius = 0.266301
+height = 1.04118
+
+[node name="PlasmaSML_" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.69827)
+
+[node name="Base" type="Node3D" parent="."]
+script = ExtResource("1_mcpys")
+speed = 35.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_qsb8e")
+skeleton = NodePath("../..")
+
+[node name="HitCast" type="RayCast3D" parent="Base/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45328, 1.07236e-07)
+target_position = Vector3(0, 5, 0)
+collision_mask = 63
+hit_from_inside = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Base"]
+modulate = Color(0.482353, 0.313726, 1, 1)
+billboard = 1
+double_sided = false
+alpha_scissor_threshold = 0.09
+alpha_hash_scale = 0.0
+alpha_antialiasing_mode = 2
+texture = ExtResource("1_2ru7y")
+
+[node name="Trail" type="Node3D" parent="Base"]
+script = ExtResource("3_445w2")
+
+[node name="TEffect" type="CPUParticles3D" parent="Base/Trail"]
+transform = Transform3D(1, 0, 0, 0, 0.0277198, 0.999616, 0, -0.999616, 0.0277198, 0.0488381, 0, 0)
+gi_mode = 0
+amount = 40
+lifetime = 1.4
+mesh = SubResource("QuadMesh_0vywr")
+emission_shape = 3
+emission_box_extents = Vector3(0.25, 0.25, 0.25)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.79
+gravity = Vector3(0, 0.35, 0)
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+radial_accel_max = 0.2
+damping_min = 0.5
+damping_max = 0.5
+angle_max = 360.0
+color_ramp = SubResource("Gradient_hx0qv")
+
+[node name="Glow" type="OmniLight3D" parent="Base/Trail"]
+light_energy = 2.0
+distance_fade_enabled = true
+distance_fade_length = 0.1
+omni_range = 11.4498
+omni_attenuation = 2.29739
+script = ExtResource("3_c8utk")
+perma = true
+
+[node name="Area3D" type="Area3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+collision_layer = 0
+collision_mask = 63
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base/Area3D"]
+shape = SubResource("CapsuleShape3D_n0q13")
+
+[connection signal="body_entered" from="Base/Area3D" to="Base" method="_on_area_3d_body_entered"]

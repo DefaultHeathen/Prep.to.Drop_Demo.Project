@@ -1,0 +1,24 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=5 format=3 uid="uid://cey2aobekn08c"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_83xv5"]
+animation = &"idle aiming"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lqb2c"]
+animation = &"run forward"
+
+[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_th6li"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_enjcv"]
+animation = &"walk forward"
+
+[resource]
+graph_offset = Vector2(-514, 136)
+nodes/IdleStand/node = SubResource("AnimationNodeAnimation_83xv5")
+nodes/IdleStand/position = Vector2(-313.359, 174.025)
+nodes/RunForward/node = SubResource("AnimationNodeAnimation_lqb2c")
+nodes/RunForward/position = Vector2(-160, 400)
+nodes/WIRGate/node = SubResource("AnimationNodeBlend3_th6li")
+nodes/WIRGate/position = Vector2(60, 120)
+nodes/WalkFStand/node = SubResource("AnimationNodeAnimation_enjcv")
+nodes/WalkFStand/position = Vector2(-180, 0)
+node_connections = [&"output", 0, &"WIRGate", &"WIRGate", 0, &"WalkFStand", &"WIRGate", 1, &"IdleStand", &"WIRGate", 2, &"RunForward"]

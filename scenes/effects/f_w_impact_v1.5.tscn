@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1f5tuqgbea7r"]
+
+[ext_resource type="Texture2D" uid="uid://bkwvah24kpdqk" path="res://assets/2D/Particle Pack/smoke_02.png" id="1_ahwun"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtmdi"]
+transparency = 1
+depth_draw_mode = 2
+shading_mode = 2
+diffuse_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ahwun")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_0m0hh"]
+material = SubResource("StandardMaterial3D_jtmdi")
+size = Vector2(0.1, 0.9)
+
+[sub_resource type="Gradient" id="Gradient_pdogd"]
+offsets = PackedFloat32Array(0.546341, 0.819512, 1)
+colors = PackedColorArray(1, 0.74902, 0.415686, 1, 1, 0.901961, 0.768627, 1, 1, 1, 1, 0)
+
+[node name="LiteImpact" type="Node3D"]
+
+[node name="FWImpactV15_" type="CPUParticles3D" parent="."]
+transform = Transform3D(1.40845, 0, 0, 0, 0.039042, 1.40791, 0, -1.40791, 0.039042, 0.0488381, 0, 0)
+gi_mode = 0
+emitting = false
+amount = 4
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_0m0hh")
+emission_shape = 3
+emission_box_extents = Vector3(0, 0.05, 0.05)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.79
+gravity = Vector3(0, -0.8, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+angular_velocity_min = -20.0
+angular_velocity_max = 25.0
+radial_accel_min = -0.1
+radial_accel_max = 0.1
+angle_min = -720.0
+angle_max = 720.0
+color = Color(1, 0.74902, 0.415686, 1)
+color_ramp = SubResource("Gradient_pdogd")

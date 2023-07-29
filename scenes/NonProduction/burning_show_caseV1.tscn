@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://hle8b7cui0yk"]
+
+[ext_resource type="Texture2D" uid="uid://bkwvah24kpdqk" path="res://assets/2D/Particle Pack/smoke_02.png" id="1_ixkwi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtmdi"]
+transparency = 1
+shading_mode = 2
+diffuse_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ixkwi")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_u86c4"]
+material = SubResource("StandardMaterial3D_jtmdi")
+size = Vector2(50, 50)
+
+[sub_resource type="Gradient" id="Gradient_ltyif"]
+offsets = PackedFloat32Array(0, 0.146341, 0.858537, 1)
+colors = PackedColorArray(1.81, 1.14, 0.24, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="BurningShowCase" type="CPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2794, 55.7829, 99.6175)
+gi_mode = 0
+amount = 35
+lifetime = 120.0
+mesh = SubResource("QuadMesh_u86c4")
+emission_shape = 2
+emission_sphere_radius = 0.1
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 0.28, 0)
+initial_velocity_min = 1.5
+initial_velocity_max = 1.5
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+damping_min = 0.2
+damping_max = 0.2
+angle_min = -720.0
+angle_max = 720.0
+color_ramp = SubResource("Gradient_ltyif")

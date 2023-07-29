@@ -1,0 +1,95 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=28 format=3 uid="uid://clk470xcbi0tk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lt7lj"]
+animation = &"idle aiming"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ift8h"]
+animation = &"idle crouching aiming"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hnocw"]
+animation = &"run forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g4ydv"]
+animation = &"shoot_react"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_knxpk"]
+animation = &"shoot_react"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wt0vw"]
+animation = &"walk forward"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eqp38"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqrc7"]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_koc8n"]
+xfade_time = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6d0p5"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6f5x3"]
+xfade_time = 0.8
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ntgmx"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hown2"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gyu2l"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4si4d"]
+xfade_time = 0.5
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n0e0q"]
+xfade_time = 0.8
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_40m5a"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l4djs"]
+xfade_time = 1.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q0uip"]
+xfade_time = 0.8
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mf76b"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ae0ow"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b7d00"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dp8qn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_trsat"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eiu55"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_voacn"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_miy2w"]
+switch_mode = 2
+advance_mode = 2
+
+[resource]
+states/Start/position = Vector2(350, 26)
+"states/idle aiming/node" = SubResource("AnimationNodeAnimation_lt7lj")
+"states/idle aiming/position" = Vector2(464, 26)
+"states/idle crouching aiming/node" = SubResource("AnimationNodeAnimation_ift8h")
+"states/idle crouching aiming/position" = Vector2(838, 36)
+"states/run forward/node" = SubResource("AnimationNodeAnimation_hnocw")
+"states/run forward/position" = Vector2(650, -30)
+states/shoot_react/node = SubResource("AnimationNodeAnimation_knxpk")
+states/shoot_react/position = Vector2(658, -132)
+"states/shoot_react 2/node" = SubResource("AnimationNodeAnimation_g4ydv")
+"states/shoot_react 2/position" = Vector2(668, -231)
+"states/walk forward/node" = SubResource("AnimationNodeAnimation_wt0vw")
+"states/walk forward/position" = Vector2(650, 78)
+transitions = ["Start", "idle aiming", SubResource("AnimationNodeStateMachineTransition_eqp38"), "idle aiming", "run forward", SubResource("AnimationNodeStateMachineTransition_iqrc7"), "run forward", "idle aiming", SubResource("AnimationNodeStateMachineTransition_koc8n"), "idle aiming", "walk forward", SubResource("AnimationNodeStateMachineTransition_6d0p5"), "walk forward", "idle aiming", SubResource("AnimationNodeStateMachineTransition_6f5x3"), "run forward", "walk forward", SubResource("AnimationNodeStateMachineTransition_ntgmx"), "walk forward", "run forward", SubResource("AnimationNodeStateMachineTransition_hown2"), "idle aiming", "idle crouching aiming", SubResource("AnimationNodeStateMachineTransition_gyu2l"), "idle crouching aiming", "idle aiming", SubResource("AnimationNodeStateMachineTransition_4si4d"), "idle crouching aiming", "run forward", SubResource("AnimationNodeStateMachineTransition_n0e0q"), "run forward", "idle crouching aiming", SubResource("AnimationNodeStateMachineTransition_40m5a"), "idle crouching aiming", "walk forward", SubResource("AnimationNodeStateMachineTransition_l4djs"), "walk forward", "idle crouching aiming", SubResource("AnimationNodeStateMachineTransition_q0uip"), "shoot_react", "idle crouching aiming", SubResource("AnimationNodeStateMachineTransition_mf76b"), "idle crouching aiming", "shoot_react", SubResource("AnimationNodeStateMachineTransition_ae0ow"), "shoot_react", "idle aiming", SubResource("AnimationNodeStateMachineTransition_b7d00"), "idle aiming", "shoot_react", SubResource("AnimationNodeStateMachineTransition_dp8qn"), "idle aiming", "shoot_react 2", SubResource("AnimationNodeStateMachineTransition_trsat"), "idle crouching aiming", "shoot_react 2", SubResource("AnimationNodeStateMachineTransition_eiu55"), "shoot_react 2", "idle aiming", SubResource("AnimationNodeStateMachineTransition_voacn"), "shoot_react 2", "idle crouching aiming", SubResource("AnimationNodeStateMachineTransition_miy2w")]
+graph_offset = Vector2(-22, -262)
