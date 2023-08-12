@@ -44,7 +44,7 @@ A godsend of a plugin making everything possible. Future releases will more than
 1. backup game folder (NOT the android or .godot folders)
 1. download the latest and greatest of the plugin releases
 1. go to the game addon files in the systems file manager
-1. delete the whole entirity of the xr tools folder
+1. _delete the whole entirity of the xr tools folder_ This will cause issues where dependencies can't be readily fixed. I'll update with a fix.
 1. grab the proper folder within the 'addons' subfolder 'godot-xr-tools' and
 1. copy it over to the addons.
 
