@@ -12,7 +12,7 @@ For a full simple "what you can do" statement from the owners themselves, [go he
 "Halo 2 & Halo 3: ODST © Microsoft Corporation. "Prepare to Drop" was created under Microsoft's "Game Content Usage Rules" using assets from Halo 2 & Halo 3:ODST, and it is not endorsed by or affiliated with Microsoft."
 ```
 
-and also not making any cash from this (opposite, for me) or even promote any commercial venture. Which is perfect because both this project and Godot is a free open source software!
+and also not making any cash from this (opposite, in fact; for me at least ) or even promote any commercial venture. Which is perfect because both this project and Godot is a free open source software!
 
 
 # BEFORE USING:
